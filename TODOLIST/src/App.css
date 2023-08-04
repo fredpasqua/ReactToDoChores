@@ -1,0 +1,21 @@
+.center {
+    text-align: center;
+  width: 100%;
+
+  padding: 10px;
+}
+.list {
+
+  display: flex;
+  flex-direction: column;
+  align-items:normal;
+  
+}
+
+.todoItem {
+  display: flex; 
+  padding: 20px;
+}
+.todoButton {
+  margin: 10px;
+}
