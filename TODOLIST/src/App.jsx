@@ -9,8 +9,12 @@ function App() {
   const [todos, setTodos] = useState(() => {
     // getting stored value
     const saved = localStorage.getItem("todos");
-    const initialValue = JSON.parse([saved]);
-    return initialValue || [];
+    if (saved.length > 0) {
+      const initialValue = JSON.parse([saved]);
+      return initialValue;
+    } else {
+      return [];
+    }
   });
   const [newTodo, setNewTodo] = useState("");
 
