@@ -8,12 +8,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   const [todos, setTodos] = useState(() => {
     // getting stored value
-    const saved = localStorage.getItem("todos");
-    if (saved.length > 0) {
-      const initialValue = JSON.parse([saved]);
-      return initialValue;
+    if (localStorage.getItem("todos") != null) {
+      const saved = localStorage.getItem("todos");
+      if (saved.length > 0) {
+        const initialValue = JSON.parse([saved]);
+        return initialValue;
+      }
     } else {
-      return [];
+      return [{ todo: "do something", id: 293847 }];
     }
   });
   const [newTodo, setNewTodo] = useState("");
