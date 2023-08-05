@@ -38,9 +38,11 @@ function App() {
           {"  "}
           <Button
             variant="primary"
+            type="submit"
             onClick={
               newTodo.length > 0
-                ? () => {
+                ? (e) => {
+                    e.preventDefault();
                     setTodos([...todos, { todo: newTodo, id: nanoid() }]);
 
                     setNewTodo("");
