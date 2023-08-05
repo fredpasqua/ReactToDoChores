@@ -4,16 +4,21 @@ import { nanoid } from "nanoid";
 
 import "./App.css";
 import TodoItem from "./todoItem";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("todos");
+    const initialValue = JSON.parse([saved]);
+    return initialValue || [];
+  });
   const [newTodo, setNewTodo] = useState("");
 
   const handleRemoveTodo = (id) => {
     let newTodos = todos.filter((todo) => todo.id !== id);
     setTodos(newTodos);
   };
-
+  localStorage.setItem("todos", JSON.stringify(todos));
 
   return (
     <>
@@ -33,14 +38,15 @@ function App() {
           {"  "}
           <Button
             variant="primary"
-            onClick= {newTodo.length > 0
-            ? () => {
-                setTodos([...todos, { todo: newTodo, id: nanoid() }]);
-                setNewTodo("");
-              }
-            : null}
-              
-            
+            onClick={
+              newTodo.length > 0
+                ? () => {
+                    setTodos([...todos, { todo: newTodo, id: nanoid() }]);
+
+                    setNewTodo("");
+                  }
+                : null
+            }
           >
             Add
           </Button>
