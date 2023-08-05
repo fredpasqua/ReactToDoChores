@@ -51,7 +51,9 @@ function App() {
 
                     setNewTodo("");
                   }
-                : null
+                : (e) => {
+                    e.preventDefault();
+                  }
             }
           >
             Add
