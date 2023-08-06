@@ -5,8 +5,13 @@ export default function TodoItem({ todo, id, handleRemoveTodo })
       
   return (
     <>
-<div className="todoItem"> <Button className="todoButton" onClick={() => handleRemoveTodo(id)}>X</Button> <p key={id}>{todo} </p>
-</div></>
-
-)
+      <div className="todoItem">
+        {" "}
+        <p key={id}>{todo}</p>
+        <Button className="todoButton" onClick={() => handleRemoveTodo(id)}>
+          X
+        </Button>{" "}
+      </div>
+    </>
+  );
   }

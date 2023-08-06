@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Button } from "react-bootstrap";
-import { nanoid } from "nanoid";
-
 import "./App.css";
-import TodoItem from "./todoItem";
+import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ListGroup from "react-bootstrap/ListGroup";
+import { nanoid } from "nanoid";
+import TodoItem from "./todoItem";
+
 function App() {
   const [todos, setTodos] = useState(() => {
     // getting stored value
@@ -31,8 +32,8 @@ function App() {
       <h1 className="center">TODOS</h1>
       <div className="addTodoContainer">
         <form className="center">
-          <label>New Todo:</label>
           <input
+            className="inputBox"
             type="text"
             name="todoInput"
             value={newTodo}
@@ -40,9 +41,8 @@ function App() {
               setNewTodo(e.target.value);
             }}
           />
-
-          {"  "}
           <Button
+            className="submitButton"
             variant="primary"
             type="submit"
             onClick={
@@ -60,16 +60,23 @@ function App() {
           >
             Add
           </Button>
+          {"  "}
         </form>
       </div>
-      <div className="center list">
+
+      <div className="center">
         {todos?.map((todo) => (
-          <TodoItem
-            key={todo.id}
-            todo={todo.todo}
-            id={todo.id}
-            handleRemoveTodo={handleRemoveTodo}
-          ></TodoItem>
+          <ListGroup key="listKey">
+            <ListGroup.Item>
+              {" "}
+              <TodoItem
+                key={todo.id}
+                todo={todo.todo}
+                id={todo.id}
+                handleRemoveTodo={handleRemoveTodo}
+              ></TodoItem>
+            </ListGroup.Item>
+          </ListGroup>
         ))}
       </div>
     </>

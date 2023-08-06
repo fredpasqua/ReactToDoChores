@@ -1,21 +1,31 @@
 .center {
-    text-align: center;
+  text-align: center;
   width: 100%;
-
-  padding: 10px;
+  padding: 20px;
 }
-.list {
 
+.addTodoContainer {
   display: flex;
-  flex-direction: column;
-  align-items:normal;
-  
+  align-items: center;
+}
+
+.inputBox {
+  height: 38px;
+  border-radius: 8px;
+  width: 100%;
+}
+.submitButton {
+  margin-top: 10px;
+  width: 100%;
 }
 
 .todoItem {
-  display: flex; 
-  padding: 20px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: x-large;
+  max-height: fit-content;
 }
 .todoButton {
-  margin: 10px;
+  margin-left: auto;
 }
