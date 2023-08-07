@@ -22,10 +22,13 @@
 .todoItem {
   display: flex;
   justify-content: left;
-  align-items: center;
-  font-size: x-large;
+
+  font-size: large;
   max-height: fit-content;
 }
 .todoButton {
   margin-left: auto;
+}
+.list-group-item {
+  text-align: left !important;
 }
