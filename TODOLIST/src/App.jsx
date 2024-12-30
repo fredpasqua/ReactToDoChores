@@ -25,6 +25,23 @@ function App() {
     let newTodos = todos.filter((todo) => todo.id !== id);
     setTodos(newTodos);
   };
+  
+    const handleMoveUp = (id, todos) => {
+      const newTodos = [...todos];
+      console.log(newTodos);
+      // const index = newTodos.findIndex(id);
+
+      // if (index > 0) {
+      //   // Swap the current todo with the one above it
+      //   const temp = newTodos[index];
+      //   newTodos[index] = newTodos[index - 1];
+      //   newTodos[index - 1] = temp;
+      // }
+
+      // setTodos(newTodos);
+    }
+   
+
   localStorage.setItem("todos", JSON.stringify(todos));
 
   return (
@@ -75,6 +92,7 @@ function App() {
                 todo={todo.todo}
                 id={todo.id}
                 handleRemoveTodo={handleRemoveTodo}
+                handleMoveUp={handleMoveUp}
               ></TodoItem>
             </ListGroup.Item>
           </ListGroup>
