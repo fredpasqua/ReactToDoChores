@@ -55,6 +55,7 @@ function App() {
                   }
                 : (e) => {
                     e.preventDefault();
+                    alert("Please Add a Todo First!")
                   }
             }
           >
