@@ -9,14 +9,22 @@ import TodoItem from "./todoItem";
 function App() {
   const [todos, setTodos] = useState(() => {
     // getting stored value
-    if (localStorage.getItem("todos") != null) {
+    if (localStorage.getItem("todos") != -1) {
       const saved = localStorage.getItem("todos");
       if (saved.length > 0) {
         const initialValue = JSON.parse([saved]);
+     
         return initialValue;
+    
       }
     } else {
-      return [{ todo: "do something", id: 293847 }];
+      console.log('no local storage')
+      const startupObject = 
+      [{todo: "do Something already...", id: "8"}, 
+        {todo: "do Something else", id: 
+      "2"
+      }]
+      return startupObject;
     }
   });
   const [newTodo, setNewTodo] = useState("");
@@ -26,20 +34,28 @@ function App() {
     setTodos(newTodos);
   };
   
-    const handleMoveUp = (id, todos) => {
-      const newTodos = [...todos];
-      console.log(newTodos);
-      // const index = newTodos.findIndex(id);
+  const handleMoveUp = (id, todos) => {
+const object = (todos.find(todo => todo.id === id));
+   console.log(object)
+  const index = todos.indexOf(object);
 
-      // if (index > 0) {
-      //   // Swap the current todo with the one above it
-      //   const temp = newTodos[index];
-      //   newTodos[index] = newTodos[index - 1];
-      //   newTodos[index - 1] = temp;
-      // }
+  if (index !== -1) {
+    // Remove the object from its current position
+    todos.splice(index, 1);
+    console.log(todos)
 
-      // setTodos(newTodos);
-    }
+    // Insert the object at the beginning of the array
+    todos.unshift(object);
+localStorage.setItem("todos", JSON.stringify(todos));
+setTodos(todos)
+console.log("final after effect", todos)
+  }
+
+}
+   
+  
+  
+   
    
 
   localStorage.setItem("todos", JSON.stringify(todos));
@@ -93,6 +109,8 @@ function App() {
                 id={todo.id}
                 handleRemoveTodo={handleRemoveTodo}
                 handleMoveUp={handleMoveUp}
+                todos={todos}
+             
               ></TodoItem>
             </ListGroup.Item>
           </ListGroup>

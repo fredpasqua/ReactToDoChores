@@ -1,7 +1,7 @@
 import {Button} from 'react-bootstrap';
 import "./todoItem.css";
 // eslint-disable-next-line react/prop-types
-export default function TodoItem({ todo, id, handleRemoveTodo, handleMoveUp }) 
+export default function TodoItem({ todo, id, handleRemoveTodo, handleMoveUp, todos }) 
     {
       
   return (
@@ -9,7 +9,7 @@ export default function TodoItem({ todo, id, handleRemoveTodo, handleMoveUp })
       <div className="todoItem">
         {" "}
         <p key={id}>{todo}</p>
-        <Button className="todoButton" onClick={() => handleMoveUp(id)}>
+        <Button className="todoButton" onClick={() => handleMoveUp(id, todos)}>
           MOVE UP
         </Button>{" "}
         <Button className="todoButton" onClick={() => handleRemoveTodo(id)}>
