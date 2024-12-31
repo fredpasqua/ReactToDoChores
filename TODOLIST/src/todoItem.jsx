@@ -11,7 +11,7 @@ export default function TodoItem({ todo, id, handleRemoveTodo, handleMoveUp, tod
         <p key={id}>{todo}</p>
         <div className='buttonscontainer'>
         <Button className="todoButton" onClick={() => handleMoveUp(id, todos)}>
-          MOVE TO TOP
+          Prioritize
         </Button>{" "}
         <Button className="todoButton" onClick={() => handleRemoveTodo(id)}>
           X
