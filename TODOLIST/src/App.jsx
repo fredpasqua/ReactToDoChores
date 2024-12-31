@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -7,26 +7,24 @@ import { nanoid } from "nanoid";
 import TodoItem from "./todoItem";
 
 function App() {
-  const [todos, setTodos] = useState(() => {
+  const [todos, setTodos] = useState([]); 
+  
+ useEffect(() => {
     // getting stored value
     if (localStorage.getItem("todos") != -1) {
       const saved = localStorage.getItem("todos");
       if (saved.length > 0) {
         const initialValue = JSON.parse([saved]);
      
-        return initialValue;
+        setTodos(initialValue);
     
       }
     } else {
-      console.log('no local storage')
-      const startupObject = 
-      [{todo: "do Something already...", id: "8"}, 
-        {todo: "do Something else", id: 
-      "2"
-      }]
-      return startupObject;
+     
+    
+      setTodos([{}]);
     }
-  });
+}, [todos]);
   const [newTodo, setNewTodo] = useState("");
 
   const handleRemoveTodo = (id) => {

@@ -9,12 +9,14 @@ export default function TodoItem({ todo, id, handleRemoveTodo, handleMoveUp, tod
       <div className="todoItem">
         {" "}
         <p key={id}>{todo}</p>
+        <div className='buttonscontainer'>
         <Button className="todoButton" onClick={() => handleMoveUp(id, todos)}>
-          MOVE UP
+          MOVE TO TOP
         </Button>{" "}
         <Button className="todoButton" onClick={() => handleRemoveTodo(id)}>
           X
         </Button>{" "}
+        </div>
       </div>
     </>
   );

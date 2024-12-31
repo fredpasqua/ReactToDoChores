@@ -1,1 +1,7 @@
 
+.todoItem {
+        display: flex;
+}
+.buttonscontainer {
+    margin-left: auto;
+}
